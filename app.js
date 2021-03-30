@@ -4,6 +4,7 @@ let camera, renderer, scene;
 const originalBoxSize = 3;
 
 let stack = [];
+let overhangs = [];
 const boxHeight = 1;  // height of each layer
 
 let gameStarted = false;
@@ -14,21 +15,64 @@ init();
 
 window.addEventListener('click', () => {
     if (!gameStarted) {
+        // audio.play();
         renderer.setAnimationLoop(animation);
         gameStarted = true;
-        audio.play();
     } else {
         const topLayer = stack[stack.length - 1];
+        const previousLayer = stack[stack.length - 2];
+
         const direction = topLayer.direction;
 
-        // next layer
-        const nextX = direction == 'x' ? 0 : -10;
-        const nextZ = direction == 'z' ? 0 : -10;
-        const newWidth = originalBoxSize;
-        const newDepth = originalBoxSize;
-        const nextDirection = direction == 'x' ? 'z' : 'x';
+        const delta = topLayer.threejs.position[direction] - previousLayer.threejs.position[direction];
 
-        addlayer(nextX, nextZ, newWidth, newDepth, nextDirection);
+        const overHangpart = Math.abs(delta);
+
+        const size = direction == 'x' ? topLayer.width : topLayer.depth;
+
+        const overlap = size - overHangpart;
+
+        if (overlap > 0) {
+            console.log(overlap);
+            // cutting layer
+            const newWidth = direction == 'x' ? overlap : topLayer.width;
+            const newDepth = direction == 'x' ? overlap : topLayer.depth;
+
+            // updating metadata
+            topLayer.width = newWidth;
+            topLayer.depth = newDepth;
+
+            // updating the box
+            topLayer.threejs.scale[direction] = overlap / size;
+            topLayer.threejs.position[direction] -= delta / 2;
+
+            // // overhanging part
+            // const overhangShift = (overlap / 2 * overHangpart / 2) * Math.sign(delta);
+            // const overhangX =
+            //     direction == 'x'
+            //         ? topLayer.threejs.position.x + overhangShift
+            //         : topLayer.threejs.position.x;
+            // const overhangZ =
+            //     direction == 'z'
+            //         ? topLayer.threejs.position.z + overhangShift
+            //         : topLayer.threejs.position.z;
+            // const overhangWidth = direction == 'x' ? overHangpart : newWidth;
+            // const overhangDepth = direction == 'z' ? overHangpart : newDepth;
+
+            // addOverHang(overhangX, overhangZ, overhangWidth, overhangDepth);
+
+
+            // next layer
+            const nextX = direction == 'x' ? topLayer.threejs.position.x : -10;
+            const nextZ = direction == 'z' ? topLayer.threejs.position.z : -10;
+            const nextDirection = direction == 'x' ? 'z' : 'x';
+
+            addlayer(nextX, nextZ, newWidth, newDepth, nextDirection);
+        }
+        else {
+            console.log('Ended');
+            gameStarted = false;
+        }
     }
 });
 
@@ -55,7 +99,7 @@ function init() {
     );
 
     camera.position.set(5, 5, 5);
-    camera.lookAt(0, 0, 0);
+    camera.lookAt(0, 1, 0);
 
     // setting up lights
     const ambientLight = new THREE.AmbientLight(0xffffff, 0.6);
@@ -73,6 +117,13 @@ function init() {
 
     container.appendChild(renderer.domElement);
 }
+
+
+// function addOverHang(x, z, width, depth) {
+//     const y = boxHeight * (stack.length - 1);
+//     const overhang = generateBox(x, y, z, width, depth);
+//     overhangs.push(overhang);
+// }
 
 
 function addlayer(x, z, width, depth, direction) {
@@ -102,7 +153,7 @@ function generateBox(x, y, z, width, depth) {
 
 
 function animation() {
-    const speed = 0.15;
+    const speed = 0.18;
 
     const topLayer = stack[stack.length - 1];
     topLayer.threejs.position[topLayer.direction] += speed;
