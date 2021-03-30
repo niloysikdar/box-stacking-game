@@ -11,9 +11,11 @@ body {
     height: 100vh;
     max-width: 100vw;
     overflow-x: hidden;
+    overflow-y: hidden;
     display: flex;
     justify-content: center;
     align-items: center;
+    font-family: 'Roboto', sans-serif;
 }
 
 .scene, canvas {
@@ -29,6 +31,110 @@ h2 {
     padding-top: 2rem;
     padding-right: 2rem;
     color: #ffffff;
-    font-size: 2.6rem;
-    font-family: 'Roboto', sans-serif;
+    font-size: 2.8rem;
+    text-align: center;
+}
+
+.loader-wrapper {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: #111121;
+  display:flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 10;
+}
+
+h1 {
+    color: #ffffff;
+    margin-top: 1.5rem;
+    font-size: 2rem;
+    transform: translateX(1rem);
+    text-align: center;
+}
+
+.loader {
+  display: inline-block;
+  width: 7rem;
+  height: 7rem;
+  position: relative;
+  border: 4px solid #Fff;
+  animation: loader 2s infinite ease;
+  border-radius: 0.5rem;
+}
+.loader-inner {
+  vertical-align: top;
+  display: inline-block;
+  width: 100%;
+  background-color: #fff;
+  animation: loader-inner 2s infinite ease-in;
+  border-radius: 0.2rem;
+}
+
+.loader-wrapper-hidden {
+    animation: faeOut 0.5s;
+    animation-fill-mode: forwards;
+}
+
+.welcome {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: #111121;
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 20;
+    visibility: hidden;
+}
+
+.game-name {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.try-now {
+    background-color: #ffffff;
+    border-radius: 1rem;
+    color: #000000;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+
+@keyframes loader {
+  0% { transform: rotate(0deg);}
+  25% { transform: rotate(180deg);}
+  50% { transform: rotate(180deg);}
+  75% { transform: rotate(360deg);}
+  100% { transform: rotate(360deg);}
+}
+
+@keyframes loader-inner {
+  0% { height: 0%;}
+  25% { height: 0%;}
+  50% { height: 100%;}
+  75% { height: 100%;}
+  100% { height: 0%;}
+}
+
+@keyframes faeOut {
+    100% {
+        opacity: 0;
+        visibility: hidden;
+    }
+
 }

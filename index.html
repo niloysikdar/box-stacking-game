@@ -5,13 +5,28 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./style.css">
-    <title>Box Game</title>
+    <title>Box Stacking Game</title>
 </head>
 
 <body>
     <div class="scene"></div>
     <h2>0</h2>
-    <!-- <audio src="./sound.mp3" autoplay loop preload="auto"></audio> -->
+
+    <div class="loader-wrapper">
+        <span class="loader"><span class="loader-inner"></span></span>
+        <h1>Loading ...</h1>
+    </div>
+
+    <div class="welcome">
+        <div class="game-name">
+            <h1>Box Stacking Game</h1>
+            <h3>Don't lose your box</h3>
+        </div>
+        <button class="try-now">Try Now</button>
+        <h3>Game by Niloy Sikdar</h3>
+    </div>
+
+    <audio src="./sound.mp3" autoplay loop></audio>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r126/three.min.js"></script>
     <script src="./app.js"></script>

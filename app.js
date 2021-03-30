@@ -121,6 +121,7 @@ function init() {
     renderer.render(scene, camera);
 
     container.appendChild(renderer.domElement);
+    removeLoader();
 }
 
 
@@ -183,3 +184,8 @@ function onWindowResize() {
 }
 
 window.addEventListener('resize', onWindowResize);
+
+function removeLoader() {
+    const loader = document.querySelector('.loader-wrapper');
+    loader.className = 'loader-wrapper-hidden';
+}
