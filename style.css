@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
 * {
     margin: 0;
     padding: 0;
@@ -7,7 +9,8 @@
 body {
     background: #111121;
     height: 100vh;
-    width: 100vw;
+    max-width: 100vw;
+    overflow-x: hidden;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -17,4 +20,15 @@ body {
     position: absolute;
     width: 100%;
     height: 100%;
+}
+
+h2 {
+    position: fixed;
+    top: 0;
+    right: 0;
+    padding-top: 2rem;
+    padding-right: 2rem;
+    color: #ffffff;
+    font-size: 2.5rem;
+    font-family: 'Roboto', sans-serif;
 }

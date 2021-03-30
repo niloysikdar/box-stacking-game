@@ -165,3 +165,16 @@ function animation() {
 
     renderer.render(scene, camera);
 }
+
+function onWindowResize() {
+    const width = 10;
+    const height = width * (container.clientHeight / container.clientWidth);
+    camera.left = width / -2;
+    camera.right = width / 2;
+    camera.top = height / 2;
+    camera.bottom = height / -2;
+    camera.updateProjectionMatrix();
+    renderer.setSize(container.clientWidth, container.clientHeight);
+}
+
+window.addEventListener('resize', onWindowResize);
