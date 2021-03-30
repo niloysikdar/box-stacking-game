@@ -1,5 +1,5 @@
 const container = document.querySelector('.scene');
-var audio = new Audio('sound.mp3');
+// var audio = new Audio('sound.mp3');
 let camera, renderer, scene;
 const originalBoxSize = 3;
 
@@ -15,7 +15,7 @@ init();
 
 window.addEventListener('click', () => {
     if (!gameStarted) {
-        // audio.play();
+        //audio.play();
         renderer.setAnimationLoop(animation);
         gameStarted = true;
     } else {
@@ -84,7 +84,7 @@ function init() {
     addlayer(0, 0, originalBoxSize, originalBoxSize);
 
     // First layer
-    addlayer(-10, 0, originalBoxSize, originalBoxSize, 'x');
+    addlayer(-11, 0, originalBoxSize, originalBoxSize, 'x');
 
     // camera setup
     const width = 10;
