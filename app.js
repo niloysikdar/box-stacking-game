@@ -1,7 +1,9 @@
 const container = document.querySelector('.scene');
+const displayScore = document.querySelector('h2');
 // var audio = new Audio('sound.mp3');
 let camera, renderer, scene;
 const originalBoxSize = 3;
+let score = 0;
 
 let stack = [];
 let overhangs = [];
@@ -34,6 +36,9 @@ window.addEventListener('click', () => {
 
         if (overlap > 0) {
             console.log(overlap);
+            score += 1;
+            displayScore.innerText = score;
+            console.log(score);
             // cutting layer
             const newWidth = direction == 'x' ? overlap : topLayer.width;
             const newDepth = direction == 'x' ? overlap : topLayer.depth;
@@ -153,7 +158,7 @@ function generateBox(x, y, z, width, depth) {
 
 
 function animation() {
-    const speed = 0.18;
+    const speed = 0.16;
 
     const topLayer = stack[stack.length - 1];
     topLayer.threejs.position[topLayer.direction] += speed;
