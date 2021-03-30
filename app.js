@@ -158,7 +158,7 @@ function generateBox(x, y, z, width, depth) {
 
 
 function animation() {
-    const speed = 0.16;
+    const speed = (score < 11) ? 0.16 : (score < 21) ? 0.19 : 0.22;
 
     const topLayer = stack[stack.length - 1];
     topLayer.threejs.position[topLayer.direction] += speed;
