@@ -1,4 +1,5 @@
 const container = document.querySelector('.scene');
+var audio = new Audio('sound.mp3');
 let camera, renderer, scene;
 const originalBoxSize = 3;
 
@@ -15,6 +16,7 @@ window.addEventListener('click', () => {
     if (!gameStarted) {
         renderer.setAnimationLoop(animation);
         gameStarted = true;
+        audio.play();
     } else {
         const topLayer = stack[stack.length - 1];
         const direction = topLayer.direction;
