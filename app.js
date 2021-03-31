@@ -201,7 +201,7 @@ function applyLoader() {
 
 document.querySelector('.try-now').addEventListener('click', () => {
     const audio = document.querySelector('audio');
-    audio.play();
+    // audio.play();
     const welcomescreen = document.querySelector('.welcome');
     welcomescreen.className = 'welcome-hidden';
     applyLoader();

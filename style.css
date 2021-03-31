@@ -120,13 +120,13 @@ p {
     text-align: center;
 }
 
-.try-now {
+button {
     background: none;
     padding:  10px 20px;
     font-size: 25px;
     font-weight: 500;
     cursor: pointer;
-    margin: 10px;
+    margin: 20px;
     outline: none;
     color: #ffffff;
     border: 1px solid #3498db;
@@ -136,7 +136,7 @@ p {
     overflow: hidden;
 }
 
-.try-now::before {
+button::before {
     content: "";
     position: absolute;
     left: 0;
@@ -149,8 +149,37 @@ p {
     transition: 0.8s;
 }
 
-.try-now:hover::before {
+button:hover::before {
     height: 200%;
+}
+
+.score-page {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.3);
+}
+
+.score-card {
+    position: relative;
+    width: 18.5rem;
+    height: 15.5rem;
+    border: 1px solid #ffffff;
+    background: #111121;
+    border-radius: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+}
+
+.score-value {
+    font-size: 3rem;
 }
 
 
