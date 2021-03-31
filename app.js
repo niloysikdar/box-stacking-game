@@ -75,6 +75,7 @@ container.addEventListener('click', () => {
         else {
             console.log('Ended');
             gameStarted = false;
+            showScore();
         }
     }
 });
@@ -199,9 +200,16 @@ function applyLoader() {
     noloader.className = 'loader-wrapper';
 }
 
+function showScore() {
+    const scorepage = document.querySelector('.score-page');
+    const scorevalue = document.querySelector('.score-value');
+    scorevalue.innerText = score;
+    scorepage.style.display = 'flex';
+}
+
 document.querySelector('.try-now').addEventListener('click', () => {
     const audio = document.querySelector('audio');
-    // audio.play();
+    audio.play();
     const welcomescreen = document.querySelector('.welcome');
     welcomescreen.className = 'welcome-hidden';
     applyLoader();
