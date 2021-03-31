@@ -5,11 +5,11 @@ const originalBoxSize = 3;
 let score = 0;
 
 let stack = [];
-let overhangs = [];
 const boxHeight = 1;  // height of each layer
 
 let gameStarted = false;
 
+const level = window.prompt("Select a level to enter the game !\nEnter 1 for Easy, 2 for Medium and 3 for Difficult level.\nDefault is Easy.")
 window.focus();
 
 init();
@@ -33,10 +33,9 @@ container.addEventListener('click', () => {
         const overlap = size - overHangpart;
 
         if (overlap > 0) {
-            console.log(overlap);
             score += 1;
             displayScore.innerText = score;
-            console.log(score);
+
             // cutting layer
             const newWidth = direction == 'x' ? overlap : topLayer.width;
             const newDepth = direction == 'x' ? overlap : topLayer.depth;
@@ -49,22 +48,6 @@ container.addEventListener('click', () => {
             topLayer.threejs.scale[direction] = overlap / size;
             topLayer.threejs.position[direction] -= delta / 2;
 
-            // // overhanging part
-            // const overhangShift = (overlap / 2 * overHangpart / 2) * Math.sign(delta);
-            // const overhangX =
-            //     direction == 'x'
-            //         ? topLayer.threejs.position.x + overhangShift
-            //         : topLayer.threejs.position.x;
-            // const overhangZ =
-            //     direction == 'z'
-            //         ? topLayer.threejs.position.z + overhangShift
-            //         : topLayer.threejs.position.z;
-            // const overhangWidth = direction == 'x' ? overHangpart : newWidth;
-            // const overhangDepth = direction == 'z' ? overHangpart : newDepth;
-
-            // addOverHang(overhangX, overhangZ, overhangWidth, overhangDepth);
-
-
             // next layer
             const nextX = direction == 'x' ? topLayer.threejs.position.x : -10;
             const nextZ = direction == 'z' ? topLayer.threejs.position.z : -10;
@@ -73,7 +56,6 @@ container.addEventListener('click', () => {
             addlayer(nextX, nextZ, newWidth, newDepth, nextDirection);
         }
         else {
-            console.log('Ended');
             gameStarted = false;
             showScore();
         }
@@ -120,15 +102,7 @@ function init() {
     renderer.render(scene, camera);
 
     container.appendChild(renderer.domElement);
-    // removeLoader();
 }
-
-
-// function addOverHang(x, z, width, depth) {
-//     const y = boxHeight * (stack.length - 1);
-//     const overhang = generateBox(x, y, z, width, depth);
-//     overhangs.push(overhang);
-// }
 
 
 function addlayer(x, z, width, depth, direction) {
@@ -158,7 +132,17 @@ function generateBox(x, y, z, width, depth) {
 
 
 function animation() {
-    const speed = (score < 21) ? 0.15 : (score < 41) ? 0.17 : 0.18;
+    let speed;
+
+    if (level == '2') {
+        speed = (score < 21) ? 0.15 : (score < 41) ? 0.17 : 0.18;
+    }
+    else if (level == '3') {
+        speed = (score < 21) ? 0.17 : (score < 41) ? 0.19 : 0.20;
+    }
+    else {
+        speed = (score < 21) ? 0.14 : (score < 41) ? 0.16 : 0.18;
+    }
 
     const topLayer = stack[stack.length - 1];
     topLayer.threejs.position[topLayer.direction] += speed;
@@ -213,5 +197,11 @@ document.querySelector('.try-now').addEventListener('click', () => {
     const welcomescreen = document.querySelector('.welcome');
     welcomescreen.className = 'welcome-hidden';
     applyLoader();
-    setTimeout(removeLoader, 3000);
+    setTimeout(removeLoader, 1000);
 });
+
+document.querySelector('.play-again').addEventListener('click', () => {
+    const scorepage = document.querySelector('.score-page');
+    scorepage.style.display = 'none';
+    window.location.reload();
+})
