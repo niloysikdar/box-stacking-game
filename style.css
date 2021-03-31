@@ -46,10 +46,7 @@ h2 {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-}
-
-.loader-wrapper {
-    z-index: 20;
+  z-index: 20;
 }
 
 h1 {
@@ -83,7 +80,7 @@ h1 {
 }
 
 .loader-wrapper-hidden {
-    animation: fadeOut 0.5s;
+    animation: fadeOut;
     animation-fill-mode: forwards;
 }
 

@@ -185,7 +185,7 @@ window.addEventListener('resize', onWindowResize);
 
 document.onreadystatechange = function () {
     if (document.readyState == "complete") {
-        setTimeout(removeLoader, 3000);
+        setTimeout(removeLoader, 2000);
     }
 };
 
@@ -194,9 +194,16 @@ function removeLoader() {
     loader.className = 'loader-wrapper-hidden';
 }
 
+function applyLoader() {
+    const noloader = document.querySelector('.loader-wrapper-hidden');
+    noloader.className = 'loader-wrapper';
+}
+
 document.querySelector('.try-now').addEventListener('click', () => {
     const audio = document.querySelector('audio');
-    // audio.play();
+    audio.play();
     const welcomescreen = document.querySelector('.welcome');
     welcomescreen.className = 'welcome-hidden';
+    applyLoader();
+    setTimeout(removeLoader, 3000);
 });
