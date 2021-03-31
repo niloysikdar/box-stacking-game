@@ -1,3 +1,5 @@
+// Author : Niloy Sikdar
+
 const container = document.querySelector('.scene');
 const displayScore = document.querySelector('h2');
 let camera, renderer, scene;
@@ -9,7 +11,7 @@ const boxHeight = 1;  // height of each layer
 
 let gameStarted = false;
 
-const level = window.prompt("Select a level to enter the game !\nEnter 1 for Easy, 2 for Medium and 3 for Difficult level.\nDefault is Easy.")
+const level = window.prompt("Select a level to enter the game !\nEnter 1 for Easy, 2 for Medium and 3 for Difficult level.\nDefault is Easy.");
 window.focus();
 
 init();
@@ -170,7 +172,7 @@ window.addEventListener('resize', onWindowResize);
 
 document.onreadystatechange = function () {
     if (document.readyState == "complete") {
-        setTimeout(removeLoader, 2000);
+        setTimeout(removeLoader, 1800);
     }
 };
 
