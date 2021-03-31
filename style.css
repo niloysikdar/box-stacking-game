@@ -1,4 +1,5 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Audiowide&family=Convergence&family=JetBrains+Mono:wght@500;700&family=Poppins:wght@500&display=swap');
+
 
 * {
     margin: 0;
@@ -10,12 +11,10 @@ body {
     background: #111121;
     height: 100vh;
     max-width: 100vw;
-    overflow-x: hidden;
-    overflow-y: hidden;
+    overflow: hidden;
     display: flex;
     justify-content: center;
     align-items: center;
-    font-family: 'Roboto', sans-serif;
 }
 
 .scene, canvas {
@@ -32,6 +31,14 @@ h2 {
     padding-right: 2rem;
     color: #ffffff;
     font-size: 2.8rem;
+    text-align: center;
+}
+
+p {
+    color: #ffffff;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
     text-align: center;
 }
 
@@ -100,6 +107,24 @@ h1 {
     z-index: 10;
 }
 
+.original-name {
+    font-family: 'Convergence', sans-serif;
+}
+
+.tag {
+    font-family: 'Convergence', sans-serif;
+}
+
+.description {
+    font-family: 'Audiowide', cursive;
+    font-size: 1.3rem;
+}
+
+.developed {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 1rem;
+}
+
 .welcome-hidden {
     animation: slide 1s;
     animation-fill-mode: forwards;
@@ -110,28 +135,23 @@ h1 {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-}
-
-p {
-    color: #ffffff;
-    margin-top: 1rem;
-    margin-bottom: 1rem;
-    font-size: 1.5rem;
-    text-align: center;
+    font-family: 'Convergence', sans-serif;
 }
 
 button {
     background: none;
-    padding:  10px 20px;
-    font-size: 25px;
-    font-weight: 500;
+    padding:  12px 35px;
+    font-family: 'Poppins', sans-serif;
+    letter-spacing: 1.8px;
+    font-size: 20px;
+    font-weight: 700;
     cursor: pointer;
     margin: 20px;
     outline: none;
     color: #ffffff;
-    border: 1px solid #3498db;
+    border: 4px solid #3498db;
     border-radius: 0.5rem;
-    transition: 0.8s;
+    transition: 0.4s;
     position: relative;
     overflow: hidden;
 }
@@ -146,7 +166,7 @@ button::before {
     height: 0%;
     background: #3498db;
     z-index: -1;
-    transition: 0.8s;
+    transition: 0.4s;
 }
 
 button:hover::before {
@@ -170,7 +190,7 @@ button:hover::before {
     position: relative;
     width: 18.5rem;
     height: 15.5rem;
-    border: 1px solid #ffffff;
+    /* border: 1px solid #ffffff; */
     background: #111121;
     border-radius: 1rem;
     display: flex;
@@ -179,8 +199,23 @@ button:hover::before {
     align-items: center;
 }
 
+.score-text {
+    color: #aaaac5;
+    letter-spacing: 1.5px;
+    margin-bottom: 0;
+}
+
 .score-value {
-    font-size: 3rem;
+    font-size: 3.5rem;
+}
+
+.play-again {
+    font-size: 18px;
+    letter-spacing: 1px;
+    font-weight: 700;
+    border-radius: 30px;
+    border: none;
+    background: #0085ff;
 }
 
 
