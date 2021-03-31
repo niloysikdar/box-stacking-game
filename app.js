@@ -1,6 +1,5 @@
 const container = document.querySelector('.scene');
 const displayScore = document.querySelector('h2');
-// var audio = new Audio('sound.mp3');
 let camera, renderer, scene;
 const originalBoxSize = 3;
 let score = 0;
@@ -15,7 +14,7 @@ window.focus();
 
 init();
 
-window.addEventListener('click', () => {
+container.addEventListener('click', () => {
     if (!gameStarted) {
         //audio.play();
         renderer.setAnimationLoop(animation);
@@ -121,7 +120,7 @@ function init() {
     renderer.render(scene, camera);
 
     container.appendChild(renderer.domElement);
-    removeLoader();
+    // removeLoader();
 }
 
 
@@ -159,7 +158,7 @@ function generateBox(x, y, z, width, depth) {
 
 
 function animation() {
-    const speed = (score < 11) ? 0.16 : (score < 21) ? 0.19 : 0.22;
+    const speed = (score < 11) ? 0.16 : (score < 21) ? 0.18 : 0.20;
 
     const topLayer = stack[stack.length - 1];
     topLayer.threejs.position[topLayer.direction] += speed;
@@ -189,3 +188,10 @@ function removeLoader() {
     const loader = document.querySelector('.loader-wrapper');
     loader.className = 'loader-wrapper-hidden';
 }
+
+document.querySelector('.try-now').addEventListener('click', () => {
+    const audio = document.querySelector('audio');
+    audio.play();
+    const welcomescreen = document.querySelector('.welcome');
+    welcomescreen.className = 'welcome-hidden';
+});
