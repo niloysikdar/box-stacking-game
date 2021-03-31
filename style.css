@@ -35,9 +35,9 @@ h2 {
     text-align: center;
 }
 
-.loader-wrapper {
-  width: 100%;
-  height: 100%;
+.loader-wrapper{
+  width: 100vw;
+  height: 100vh;
   position: fixed;
   top: 0;
   left: 0;
@@ -46,7 +46,10 @@ h2 {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  z-index: 20;
+}
+
+.loader-wrapper {
+    z-index: 20;
 }
 
 h1 {
@@ -80,7 +83,7 @@ h1 {
 }
 
 .loader-wrapper-hidden {
-    animation: faeOut 0.5s;
+    animation: fadeOut 0.5s;
     animation-fill-mode: forwards;
 }
 
@@ -170,10 +173,11 @@ p {
   100% { height: 0%;}
 }
 
-@keyframes faeOut {
+@keyframes fadeOut {
     100% {
         opacity: 0;
         visibility: hidden;
+        display: none;
     }
 }
 
@@ -181,5 +185,6 @@ p {
     100% {
         transform: translateX(-350%);
         visibility: hidden;
+        display: none;
     }
 }

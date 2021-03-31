@@ -16,7 +16,6 @@ init();
 
 container.addEventListener('click', () => {
     if (!gameStarted) {
-        //audio.play();
         renderer.setAnimationLoop(animation);
         gameStarted = true;
     } else {
@@ -184,6 +183,12 @@ function onWindowResize() {
 
 window.addEventListener('resize', onWindowResize);
 
+document.onreadystatechange = function () {
+    if (document.readyState == "complete") {
+        setTimeout(removeLoader, 3000);
+    }
+};
+
 function removeLoader() {
     const loader = document.querySelector('.loader-wrapper');
     loader.className = 'loader-wrapper-hidden';
@@ -191,7 +196,7 @@ function removeLoader() {
 
 document.querySelector('.try-now').addEventListener('click', () => {
     const audio = document.querySelector('audio');
-    audio.play();
+    // audio.play();
     const welcomescreen = document.querySelector('.welcome');
     welcomescreen.className = 'welcome-hidden';
 });
