@@ -4,6 +4,7 @@ const container = document.querySelector('.scene');
 const displayScore = document.querySelector('h2');
 let camera, renderer, scene;
 const originalBoxSize = 3;
+const level = 0;
 let score = 0;
 
 let stack = [];
@@ -11,7 +12,7 @@ const boxHeight = 1;  // height of each layer
 
 let gameStarted = false;
 
-const level = window.prompt("Select a level to enter the game !\nEnter 1 for Easy, 2 for Medium and 3 for Difficult level.\nDefault is Easy.");
+// const level = window.prompt("Select a level to enter the game !\nEnter 1 for Easy, 2 for Medium and 3 for Difficult level.\nDefault is Easy.");
 window.focus();
 
 init();
@@ -143,7 +144,7 @@ function animation() {
         speed = (score < 21) ? 0.17 : (score < 41) ? 0.19 : 0.20;
     }
     else {
-        speed = (score < 21) ? 0.14 : (score < 41) ? 0.16 : 0.18;
+        speed = (score < 21) ? 0.12 : (score < 41) ? 0.13 : 0.15;
     }
 
     const topLayer = stack[stack.length - 1];
